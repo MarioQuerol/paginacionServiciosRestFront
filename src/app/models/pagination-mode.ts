@@ -8,12 +8,4 @@ export class Pagination {
     this.page = page;
     this.size = size;
   }
-
-  getPageString() {
-    return this.page.toString();
-  }
-
-  getSizeString() {
-    return this.size.toString();
-  }
 }
