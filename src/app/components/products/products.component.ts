@@ -1,3 +1,4 @@
+import { Pagination } from '../../models/pagination-mode';
 import { Product } from '../../models/product-model';
 import { ShopService } from './../../services/shop.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,8 @@ export class ProductsComponent implements OnInit {
   constructor(private shopservice: ShopService) {}
 
   ngOnInit(): void {
-    this.shopservice.obtenerProductos().subscribe((res) => {
+    let pagination: Pagination = new Pagination(1, 10);
+    this.shopservice.obtenerProductosConHeaders(pagination).subscribe((res) => {
       this.products = res;
     });
   }

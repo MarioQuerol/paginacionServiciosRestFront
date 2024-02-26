@@ -1,3 +1,4 @@
+import { Pagination } from './../models/pagination-mode';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -8,7 +9,27 @@ import { Observable } from 'rxjs';
 export class ShopService {
   constructor(private http: HttpClient) {}
 
-  obtenerProductos(): Observable<any> {
-    return this.http.get<any>('localhost:8080/shop/products?page=0&size=10');
+  obtenerProductosConQueryString(pagination: Pagination): Observable<any> {
+    return this.http.get<any>(
+      'http://localhost:8080/shop/products-con-querystring',
+      {
+        params: {
+          page: pagination.getPageString(),
+          size: pagination.getSizeString(),
+        },
+      }
+    );
+  }
+
+  obtenerProductosConHeaders(pagination: Pagination): Observable<any> {
+    return this.http.get<any>(
+      'http://localhost:8080/shop/products-con-headers',
+      {
+        headers: {
+          'x-pagination-page': pagination.getPageString(),
+          'x-pagination-size': pagination.getSizeString(),
+        },
+      }
+    );
   }
 }
