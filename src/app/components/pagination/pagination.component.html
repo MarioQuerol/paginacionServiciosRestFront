@@ -1,0 +1,13 @@
+<div class="container">
+  <span>Total registros: {{ pagination?.totalResult }}</span>
+  <select (change)="changePageSize($event)">
+    @for (option of pageSizeOptions; track option) {
+    <option [value]="option">
+      {{ option }}
+    </option>
+    }
+  </select>
+  <button (click)="previousPage()">Anterior</button>
+  <span>{{ pagination?.page }}</span>
+  <button (click)="nextPage()">Siguiente</button>
+</div>
