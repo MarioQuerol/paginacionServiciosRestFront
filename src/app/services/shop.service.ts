@@ -10,26 +10,20 @@ export class ShopService {
   constructor(private http: HttpClient) {}
 
   obtenerProductosConQueryString(pagination: Pagination): Observable<any> {
-    return this.http.get<any>(
-      'http://localhost:8080/shop/products-con-querystring',
-      {
-        params: {
-          page: pagination.getPageString(),
-          size: pagination.getSizeString(),
-        },
-      }
-    );
+    return this.http.get<any>('shop/products-con-querystring', {
+      params: {
+        page: pagination.getPageString(),
+        size: pagination.getSizeString(),
+      },
+    });
   }
 
   obtenerProductosConHeaders(pagination: Pagination): Observable<any> {
-    return this.http.get<any>(
-      'http://localhost:8080/shop/products-con-headers',
-      {
-        headers: {
-          'x-pagination-page': pagination.getPageString(),
-          'x-pagination-size': pagination.getSizeString(),
-        },
-      }
-    );
+    return this.http.get<any>('shop/products-con-headers', {
+      headers: {
+        'x-pagination-page': pagination.getPageString(),
+        'x-pagination-size': pagination.getSizeString(),
+      },
+    });
   }
 }

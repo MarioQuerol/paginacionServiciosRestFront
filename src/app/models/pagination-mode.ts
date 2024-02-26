@@ -1,10 +1,10 @@
 export class Pagination {
-  page: Number;
-  size: Number;
-  totalResult?: Number;
+  page: number;
+  size: number;
+  totalResult?: number;
   //sort: Sort;
 
-  constructor(page: Number, size: Number) {
+  constructor(page: number, size: number) {
     this.page = page;
     this.size = size;
   }
